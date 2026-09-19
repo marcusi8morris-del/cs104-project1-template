@@ -1,63 +1,58 @@
-# [Your Project Name Here]
-> A short one-line tagline for your quiz or questionnaire
+# [Personality Test]
+> "How well do you  really know yourself?" 
 
 ## Overview
-> **DELETE AND REPLACE ME:** Describe your program's focus, the type of
-> program it is (quiz, personality test, or recommendation tool), and the
-> final output a user will receive. Make it clear how user input and
-> conditional logic work together to produce that result.
+>  This program's focus is to describe someone's personality based on answers to questions and situations
+> The program is a personality test, and the final output is your personality type. 
+> You will answer some questions with the responses (Yes/No)
 >
-> Example: "This program quizzes users on Impressionist art. Based on
-> their answers, users earn points, and their final score determines
-> their level of knowledge on the topic."
-
 ## Sample Questions and Responses
-> **DELETE AND REPLACE ME:** List at least five questions you'll ask the
-> user, along with the possible responses for each. Keep every question
-> closed-ended (numbered options or yes/no) so each response can be
-> handled directly by an `if`, `elif`, or `else` statement.
+> 1. Do I enjoy working in a team-oriented environment? 
+> 2. Do I handle stress well under pressure?
+> 3. Do I handle conflict well?
+> 4. Do I have the ability to persuade people to do almost anything?
+> 5. Do I often feel like I take too much responsibility upon myself? 
 >
-> Example:
-> Which of the following painters is an Impressionist?
-> 1. Monet
-> 2. Warhol
-> 3. Rembrandt
-
+> 
+> 1. Do I enjoy working in a team-oriented environment?
+> Yes
+> No   
+> 2. Do I handle stress well under pressure?
+> Yes
+> NO
+> 3. Do I handle conflict well?
+> Yes
+> No
+> 4. Do I have the ability to persuade people to do almost anything?
+> Yes
+> No
+> 5. Do I often feel like I take too much responsibility upon myself?
+> Yes
+> NO
 ## Variables
-> **DELETE AND REPLACE ME:** List the variables your program uses. For
-> each one, note what it stores and why you structured it that way,
-> especially for variables tracking results, explain whether a single
-> variable or multiple variables makes sense for your program's logic.
+> `questions`(list of str): stores all five questions so they can be looped through one at a time.
+> `question-text`(str): the individual question currently being displayed to the user; passed into ask_question() as a parameter.
+> `answer`(str): the user's typed response ("yes" or "no") lowercased and trimmed for comparison.
+> `total_score`(int): single running tally of points. One variable works here because the result is based on a cumulative total, not separate competing categories.
+> `question`(str): the loop variable that holds the current question as the program moves through the questions list.
+> `result`(int): the 0 or 1 returned by ask_question() for the current question, added into total_score.
+> `score`(int): a single running tally of points. One variable works here because the result is based on a cumulative total, not separate competing categories.    
+> message`(str): the result text being built inside get_result_message() to determine which result message to return.
+> `final_score`(int): stores the completed quiz score once all questions have been answered.
+> `result_text`(str): stores the final message returned to the user, ready to be printed.  
 >
-> Example:
-> - `score` (int): tracks total quiz points. A single variable works here
->   since results are cumulative and only one final score matters.
-> - `decade_1920s_points`, `decade_1960s_points`, `decade_1980s_points`
->   (int): separate variables needed since multiple decades can tie for
->   highest score, one combined variable couldn't represent that.
-> - `user_choice` (str or int): stores the user's response to a question,
->   compared against expected options to decide which branch of the
->   conditional runs.
-
 ## Conditional Logic Outline
-> **DELETE AND REPLACE ME:** Outline every conditional statement in your
-> program, in the order they appear. For each one, describe it in plain
-> language (no code needed): which question/condition it relates to,
-> each branch (`if`/`elif`/`else`), the exact condition that triggers
-> each branch, the action(s) that happen in each branch, and note any
-> nested conditionals and why they're nested.
->
 > Example:
-> - **Conditional statement 1** — related to "Which of the following
->   painters is an Impressionist? 1-Monet 2-Warhol 3-Rembrandt"
->   - `if` response is 1 (Monet): display congratulatory message,
->     increment `score` by 1
->   - `else`: display incorrect message and explain the correct answer
+> - **Conditional statement 1** — related to each yes/no question
+>  `if` answer is "yes": return 1 (add a point to the total score) 
+>  `elif` answer is "no": return 0 (adds nothing to the total score)  
+>  `else` : display a message asking the user to type "yes" or "no", and ask the question again (this is a loop, not a branch that ends the program)  
+> 
 >
-> - **Conditional statement 2** — reveals final results based on `score`
->   - `if` score is 3: display high-knowledge message
->   - `elif` score is 1 or 2: display some-knowledge message
->   - `else`: display message encouraging the user to learn more
+> - **Conditional statement 2** — reveals final results based on total_score (inside get_result_message) 
+>   - `if` score is 4 or 5: display message - "You're confident, resilient, and thrive under pressure".
+>   - `elif` score is 2 or 3: display message - "You're confident, resilient, and thrive under pressure".
+>   - `else` score is 0 or 1: display message - "You may prefer independence and calmer environments " 
 
 ## How to Run
 1. Clone this repo
